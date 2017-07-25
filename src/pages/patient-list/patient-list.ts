@@ -13,14 +13,23 @@ import {DocumentListPage} from "../document-list/document-list";
 export class PatientListPage {
 
   public patients: Array<Patient> = [];
+  private firstLoad: boolean = true;
 
   constructor(public navCtrl: NavController, public fhir: FhirProvider) {
   }
 
   public ionViewDidEnter() {
     this.fhir.getPatients()
-    //.subscribe(patients => this.navCtrl.push(NewDocumentPage, {patient: patients[0]}));
-      .subscribe(patients => this.patients = patients);
+      .subscribe(patients => {
+        this.patients = patients;
+
+        if (this.firstLoad && this.patients.length == 1) {
+          const patient = this.patients[0];
+          this.navCtrl.push(DocumentListPage, {patient}).then();
+        }
+
+        this.firstLoad = false;
+      });
   }
 
   public openSettings() {

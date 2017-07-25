@@ -92,6 +92,9 @@ export class FhirProvider {
           resource: {
             resourceType: 'DocumentManifest',
             status: 'current',
+            subject: {
+              reference: `Patient/${(patient.id)}`
+            },
             content: [{
               pReference: {
                 reference: docId,
@@ -109,6 +112,7 @@ export class FhirProvider {
           fullUrl: docId,
           resource: {
             resourceType: 'DocumentReference',
+            status: 'current',
             ...document,
             subject: {
               reference: `Patient/${(patient.id)}`
