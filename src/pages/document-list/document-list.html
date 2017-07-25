@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Documents
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSettings()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h2>
+    Documents for {{this.patient.name}}
+    <br/>
+    <small>({{this.patient.id}})</small>
+  </h2>
+  <ion-item *ngFor="let doc of documents">
+    <ion-icon name="document" item-start></ion-icon>
+    <h2>{{doc.description}}</h2>
+    <!-- TODO: author, etc -->
+    <p>{{doc.indexed | amDateFormat:'YYYY-MM-DD HH:mm'}}</p>
+    <ion-icon name="download" item-end (click)="download(doc)"></ion-icon>
+  </ion-item>
+
+  <ion-card *ngIf="!this.documents || !this.documents.length">
+    <ion-card-content>
+      No documents
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="error" color="danger">
+    <ion-card-header>
+      Error
+    </ion-card-header>
+    <ion-card-content>
+      See console output for details
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab bottom right>
+    <button ion-fab (click)="newDocument()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openAbout()">
+        <ion-icon name="information"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h2>Settings</h2>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <ion-item>
+      <ion-label>FHIR URL</ion-label>
+      <ion-input type="text" formControlName="url"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!form.valid">Submit</button>
+  </form>
+</ion-content>

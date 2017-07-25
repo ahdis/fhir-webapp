@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Upload</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input type="text" formControlName="description"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY"
+                    formControlName="indexed"
+                    name="date"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <input type="file" (change)="onFile($event)"/>
+    </ion-item>
+
+    <button ion-button type="submit" [disabled]="!form.valid || !file" block>Submit</button>
+  </form>
+
+  <ion-card *ngIf="error" color="danger">
+    <ion-card-header>
+      Error
+    </ion-card-header>
+    <ion-card-content>
+      See console output for details
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
