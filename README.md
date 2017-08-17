@@ -1,26 +1,21 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# FHIR Web App
 
-## How to use this template
+The Front-End application is a Single-Page Web Application written in TypeScript (a superset of JavaScript) using the Ionic Framework. It is compatible with any device with a modern Web browser. Its UI is particulary suited for mobile devices.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+## How to run
 
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
+First, install `nodejs` and `npm`, then install `ionic`:
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
+sudo npm install -g cli
 ```
 
-Then, to run it, cd into `mySideMenu` and run:
-
+Then, install all node dependecies:
 ```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+npm install
 ```
 
-Substitute ios for android if not on a Mac.
-
+Finally, the app can be previewed by running a local server:
+```bash
+ionic serve
+```
