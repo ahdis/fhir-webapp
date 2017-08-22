@@ -8,6 +8,8 @@ import * as uuid from 'uuid/v4';
 @Injectable()
 export class FhirProvider {
   public static DEFAULT_URL: string = 'http://localhost:8080/fhir';
+
+  // data (uploaded files) is in the form: data:application/pdf,base64;XXXXXX
   // => data:{contentType},base64;{data}
   private static DATA_REGEX: RegExp = /^data:(.+);base64,(.+)/;
   public url: string;
@@ -63,8 +65,6 @@ export class FhirProvider {
 
     return Observable.of(false);
   }
-
-  // data (uploaded files) is in the form: data:application/pdf,base64;XXXXXX
 
   public getDocumentReferences(patient: Patient) {
     const params = `patient=${encodeURIComponent(patient.id)}`;
