@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams} from 'ionic-angular';
 
-import {DocumentReference} from "../../models/DocumentReference";
 import {FhirProvider} from "../../providers/fhir/fhir";
 import {NewDocumentPage} from "../new-document/new-document";
 import {Patient} from "../../models/Patient";
@@ -47,7 +46,7 @@ export class DocumentListPage {
     this.navCtrl.push(NewDocumentPage, {patient: this.patient}).then();
   }
 
-  public download(doc: DocumentReference) {
+  public download(doc: fhir.DocumentReference) {
     const url = doc.content[0].attachment.url;
     window.open(this.fhir.getAbsoluteUrl(url), '_system', 'location=yes')
   }

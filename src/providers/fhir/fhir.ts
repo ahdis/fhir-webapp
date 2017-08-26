@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, Headers} from '@angular/http';
 import {Storage} from "@ionic/storage"
 import {Observable} from "rxjs/Rx";
 import {Patient} from "../../models/Patient";
@@ -82,9 +82,9 @@ export class FhirProvider {
     const bundle: fhir.Bundle = {
       resourceType: 'Bundle',
       type: 'transaction',
-      meta: [{
-        profile: 'http://ihe.net/fhir/tag/iti-65'
-      }],
+      meta: {
+        profile: ['http://ihe.net/fhir/tag/iti-65']
+      },
       entry: [
         // DocumentManifest
         {
@@ -137,7 +137,7 @@ export class FhirProvider {
     console.log(bundle);
 
     const headers = new Headers({'Content-Type': 'application/fhir+json'});
-    return this.http.post(this.url, bundle, headers);
+    return this.http.post(this.url, bundle, { headers });
   }
 
   public getAbsoluteUrl(url: string): string {
