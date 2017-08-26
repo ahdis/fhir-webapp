@@ -54,3 +54,16 @@ Finally, the app can be previewed by running a local server:
 ```bash
 ionic serve
 ```
+
+## Deploy with Docker
+This app can also be deployed in a Docker container with the provided Dockerfile. Docker will build the app inside the container, and then run an nginx instance serving the app on port 80.
+
+First, the image must be built:
+```bash
+docker build -t fhir-webapp .
+```
+
+Then, run a container by attaching port 80 to a port on your local machine, e.g.:
+```
+docker run --rm -p 8888:80 fhir-webapp
+```
