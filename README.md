@@ -23,7 +23,7 @@ descritpion and date, and then choose the file you want to upload from your devi
 
 ### Settings Page
 The settings page allows you to change the FHIR server URL in case you want to put a different
-one. By defult it’s http://localhost:8080/fhir (FHIR base URL from [XdsOnFhir](https://github.com/ahdis/XDSonFHIR)). To go to the settings page, there is a settings icon on the top right of the *Patients* and *Document List* pages. Also, there is a small information icon on the top right of the page which will redirect you to the *About Page*.
+one. By defult it’s http://localhost:8000/fhir (FHIR base URL from [XdsOnFhir](https://github.com/ahdis/XDSonFHIR)). To go to the settings page, there is a settings icon on the top right of the *Patients* and *Document List* pages. Also, there is a small information icon on the top right of the page which will redirect you to the *About Page*.
 
 ### About Page
 This is a simple page with ahdis credentials as well as with what the application was made.
@@ -65,5 +65,7 @@ docker build -t fhir-webapp .
 
 Then, run a container by attaching port 80 to a port on your local machine, e.g.:
 ```
-docker run --rm -p 8888:80 fhir-webapp
+docker run --rm -p 8100:80 fhir-webapp
 ```
+
+The app is then available on http://localhost:8100

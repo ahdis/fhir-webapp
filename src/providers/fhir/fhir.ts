@@ -7,7 +7,7 @@ import * as uuid from 'uuid/v4';
 
 @Injectable()
 export class FhirProvider {
-  public static DEFAULT_URL: string = 'http://localhost:8080/fhir';
+  public static DEFAULT_URL: string = 'http://localhost:8000/fhir';
 
   // data (uploaded files) is in the form: data:application/pdf,base64;XXXXXX
   // => data:{contentType},base64;{data}
